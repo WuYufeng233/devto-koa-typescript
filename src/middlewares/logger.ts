@@ -23,12 +23,12 @@ log4js.configure({
     access: {
       type: 'dateFile',
       filename: logConfig.accessPath,
-      pattern: '-yyyy-MM-dd'
+      pattern: 'yyyy-MM-dd'
     },
     error: {
       type: 'dateFile',
       filename: logConfig.errorPath,
-      pattern: '-yyyy-MM-dd'
+      pattern: 'yyyy-MM-dd'
     }
   },
   categories: {
@@ -61,7 +61,9 @@ const loggerMiddlewareGenerator: KoaMiddlewareGenerator<any> = () => {
       ctx.ip ||
       ctx.ips ||
       (ctx.socket && ctx.socket.remoteAddress)
-    let logText = `${ctx.method} ${ctx.status} ${ctx.url} 请求参数： ${JSON.stringify(
+    let logText = `${ctx.method} ${ctx.status} ${
+      ctx.url
+    } 请求参数： ${JSON.stringify(
       ctx.request.body
     )} 响应参数： ${JSON.stringify(ctx.body)} - ${remoteAddress} - ${ms}ms`
     accessLogger.info(logText)
