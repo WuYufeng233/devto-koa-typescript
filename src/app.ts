@@ -7,13 +7,19 @@ import cors from 'koa2-cors'
 
 import { server } from '@src/config'
 
-import { logger, exception, corsHandlers } from '@src/middlewares'
+import {
+  logger,
+  exceptionMiddleware,
+  corsHandlers,
+  responseMiddleware
+} from '@src/middlewares'
 import InitManager from '@src/core/init'
 
 const app = new Koa()
 
 app.use(logger.loggerMiddlewareGenerator())
-app.use(exception.exceptionMiddlewareGenerator())
+app.use(exceptionMiddleware())
+app.use(responseMiddleware())
 app.use(BodyParser())
 app.use(helmet())
 app.use(cors(corsHandlers))

@@ -1,5 +1,7 @@
 import * as logger from './logger'
-import * as exception from './exception'
+import exceptionMiddleware from './exception'
+import responseMiddleware from './response'
 import corsHandlers from './cors'
+import Auth from './auth'
 
-export { logger, exception, corsHandlers }
+export { logger, exceptionMiddleware, corsHandlers, responseMiddleware, Auth }
