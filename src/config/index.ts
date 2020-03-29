@@ -14,3 +14,16 @@ export const logConfig: {
 
 // 'dev' | 'prod'
 export const environment = 'dev'
+
+export const database = {
+  databaseName: 'middle_tier',
+  host: 'localhost',
+  port: 3306,
+  user: 'root',
+  password: '123456'
+}
+
+export const jwt = {
+  secretKey: 'abc123',
+  expiresIn: 60 * 60
+}
