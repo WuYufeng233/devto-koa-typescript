@@ -27,7 +27,7 @@ export class HttpException extends Error implements IException {
   }
 }
 
-export class ParameterException extends HttpException implements IException {
+export class ParameterException extends HttpException {
   constructor(
     msg: TMessage = constants.ParameterExceptionTip.message,
     status: number = constants.ParameterExceptionTip.status,
@@ -35,5 +35,16 @@ export class ParameterException extends HttpException implements IException {
   ) {
     super(msg, status, code)
     Object.setPrototypeOf(this, ParameterException.prototype)
+  }
+}
+
+export class AuthFailedException extends HttpException {
+  constructor(
+    msg: TMessage = constants.AuthFailedExceptionTip.message,
+    status: number = constants.AuthFailedExceptionTip.status,
+    code: number = constants.AuthFailedExceptionTip.code
+  ) {
+    super(msg, status, code)
+    Object.setPrototypeOf(this, AuthFailedException.prototype)
   }
 }

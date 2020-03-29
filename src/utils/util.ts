@@ -1,3 +1,7 @@
+import jwt from 'jsonwebtoken'
+
+import { jwt as jwtConfig } from '@src/config'
+
 // type TReflectKey = string | number | symbol
 
 export function findMemberKeys<
@@ -54,4 +58,23 @@ export function findMemberKeys<
   }
 
   return _find(instance)
+}
+
+// TODO: 增加权限控制
+export function generateJwt(uid: number) {
+  const secretKey = jwtConfig.secretKey
+  const expiresIn = jwtConfig.expiresIn
+
+  // 生成 token
+  const token = jwt.sign(
+    {
+      uid
+    },
+    secretKey,
+    {
+      expiresIn
+    }
+  )
+
+  return token
 }

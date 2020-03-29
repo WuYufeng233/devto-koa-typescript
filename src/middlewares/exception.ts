@@ -36,4 +36,4 @@ const exceptionMiddlewareGenerator: KoaMiddlewareGenerator<any> = () => {
   }
 }
 
-export { exceptionMiddlewareGenerator }
+export default exceptionMiddlewareGenerator

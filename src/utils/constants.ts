@@ -17,3 +17,9 @@ export const ParameterExceptionTip: IExceptionTip = {
   status: 200,
   message: '参数错误，请检查参数'
 }
+
+export const AuthFailedExceptionTip: IExceptionTip = {
+  code: 20001,
+  status: 403,
+  message: '授权失败'
+}

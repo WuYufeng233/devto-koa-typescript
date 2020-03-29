@@ -1,3 +1,5 @@
+/// <reference path="./global.d.ts" />
+// 一定要上面这行指令，否则ts-node无法识别global.d.ts里的内容，因为ts-node默认不加载tsconfig.json的配置
 import Koa from 'koa'
 
 export interface KoaMiddlewareGenerator<T = any> {

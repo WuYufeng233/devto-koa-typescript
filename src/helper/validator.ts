@@ -23,10 +23,18 @@ interface CheckResult {
 interface Validator {
   [k: string]: any
 }
+export interface ValidatorParams {
+  body: Koa.Request['body']
+  query: Koa.Request['query']
+  path: Koa.Request['path']
+  header: Koa.Request['header']
+
+  [k: string]: any
+}
 class Validator {
   ctx: Koa.Context
-  data: any
-  parsed: any
+  data: Partial<ValidatorParams>
+  parsed: Partial<ValidatorParams>
   alias: {
     [k: string]: string
   }
@@ -38,11 +46,11 @@ class Validator {
     this.alias = {}
   }
 
-  get allParams() {
+  get allParams(): ValidatorParams {
     return {
       body: this.ctx.request.body,
       query: this.ctx.request.query,
-      path: this.ctx.params,
+      path: this.ctx.request.path,
       header: this.ctx.request.header
     }
   }
@@ -103,6 +111,7 @@ class Validator {
     if (isCustomFn) {
       // 自定义函数校验
       try {
+        // await 调用，保证异步的自定义字段验证也能被执行
         await this[key](this.data)
         rst = new RuleResult(true)
       } catch (e) {
