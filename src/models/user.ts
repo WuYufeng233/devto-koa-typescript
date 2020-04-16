@@ -30,7 +30,9 @@ User.init(
       autoIncrement: true
     },
     username: STRING,
-    password: STRING
+    password: STRING,
+    scope: INTEGER,
+    avatar: STRING
   },
   {
     sequelize,

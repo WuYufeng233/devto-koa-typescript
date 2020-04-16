@@ -20,6 +20,6 @@ export const ParameterExceptionTip: IExceptionTip = {
 
 export const AuthFailedExceptionTip: IExceptionTip = {
   code: 20001,
-  status: 403,
+  status: 401,
   message: '授权失败'
 }

@@ -1,7 +1,7 @@
 import * as pt from 'path'
 
 export const server = {
-  port: 3000
+  port: 3001
 }
 
 export const logConfig: {
@@ -26,4 +26,9 @@ export const database = {
 export const jwt = {
   secretKey: 'abc123',
   expiresIn: 60 * 60
+}
+
+export const defaultUserInfo = {
+  avatar:
+    'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png'
 }

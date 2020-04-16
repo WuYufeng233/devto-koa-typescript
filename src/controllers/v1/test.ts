@@ -6,6 +6,9 @@ const router = new Router({
   prefix: '/v1/test'
 })
 
-router.get('/', new Auth().m)
+router.get('/', new Auth().m, async (ctx, next) => {
+  ctx.result = 'ok'
+  await next()
+})
 
 export default router

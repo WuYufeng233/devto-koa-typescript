@@ -30,7 +30,7 @@ export function findMemberKeys<
     }
 
     let names = Object.keys(inst)
-    names = names.filter(name => {
+    names = names.filter((name) => {
       // 过滤不满足条件的属性或方法名
       return _shouldKeep(name)
     })
@@ -60,15 +60,20 @@ export function findMemberKeys<
   return _find(instance)
 }
 
-// TODO: 增加权限控制
-export function generateJwt(uid: number) {
+/**
+ * 生成token
+ * @param uid 账户id
+ * @param scope 权限等级
+ */
+export function generateJwt(uid: number, scope: number) {
   const secretKey = jwtConfig.secretKey
   const expiresIn = jwtConfig.expiresIn
 
   // 生成 token
   const token = jwt.sign(
     {
-      uid
+      uid,
+      scope
     },
     secretKey,
     {

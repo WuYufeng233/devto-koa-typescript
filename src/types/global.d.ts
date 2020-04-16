@@ -5,5 +5,10 @@ import Koa from 'koa'
 declare module 'koa' {
   interface ExtendableContext {
     result?: any
+    // koa官方推荐的命名空间，使用方式一般是在多个中间件之间共享数据
+    state?: {
+      auth?: any
+      currentUser?: any
+    }
   }
 }
